@@ -10,9 +10,10 @@ return {
 	"hrsh7th/nvim-cmp",
 	"L3MON4D3/LuaSnip",
 	"saadparwaiz1/cmp_luasnip",
+	"nvim-java/nvim-java",
     },
     lazy = false,
-    priority = 100,
+    priority = 1000,
     cmd = {"Mason", "MasonInstall", "MasonUpdate", "MasonUninstall", "MasonLog"},
     build = ":MasonUpdate",
     config = function()
@@ -102,7 +103,8 @@ return {
 	    matching = { disallow_symbol_nonprefix_matching = false }
 	})
 
-	local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+	local cmp_nvim_lsp = require("cmp_nvim_lsp")
+	local cmp_capabilities = cmp_nvim_lsp.default_capabilities()
 
 	require("mason").setup()
 	local mason_lspconfig = require("mason-lspconfig")
@@ -117,7 +119,7 @@ return {
 		    capabilities = cmp_capabilities
 		}
 	    end,
-
+	    ["rust_analyzer"] = function() end,
 	    ["lua_ls"] = function ()
 		lspconfig.lua_ls.setup {
 		    capabilities = cmp_capabilities,
@@ -130,6 +132,14 @@ return {
 		    }
 		}
 	    end,
+	    ["jdtls"] = function()
+		local config = {
+		    capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		    root_dir = vim.fs.root(0, {".git", "mvnw", "gradlew"}),
+		}
+		require('java').setup()
+		lspconfig.jdtls.setup(config)
+	    end,
 	    ["emmet_ls"] = function()
 		lspconfig.emmet_ls.setup({
 		    capabilities = cmp_capabilities,
@@ -137,6 +147,12 @@ return {
 			'html',
 			'css',
 			'php',
+			'xml',
+			'xhtml',
+			'svelte',
+			'vue',
+			'jsx',
+			'tsx'
 		    },
 		})
 	    end

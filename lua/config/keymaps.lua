@@ -20,9 +20,9 @@ nmap("<Leader>e", nvimtree_api.tree.toggle, opts("Toggle NvimTree"))
 -- telescope keymapping
 local builtin = require('telescope.builtin')
 
-nmap('<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-nmap('<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-nmap('<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-nmap('<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+nmap('<leader>tf', builtin.find_files, { desc = 'Telescope find files' })
+nmap('<leader>tg', builtin.live_grep, { desc = 'Telescope live grep' })
+nmap('<leader>tb', builtin.buffers, { desc = 'Telescope buffers' })
+nmap('<leader>th', builtin.help_tags, { desc = 'Telescope help tags' })
 
 
