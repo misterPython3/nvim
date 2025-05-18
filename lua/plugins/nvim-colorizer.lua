@@ -1,7 +1,9 @@
 return {
     'norcalli/nvim-colorizer.lua',
+    lazy = false,
     config = function()
-	-- termguicolor
-	require('colorizer').setup{}
+	require('colorizer').setup{
+	    '*'
+	}
     end
 }

@@ -8,6 +8,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
 vim.opt.fillchars =  {eob = " "}
+vim.opt.swapfile = false
 
 vim.opt.termguicolors = true
 
@@ -35,99 +36,99 @@ local function hasMultipleBuffer()
 	)
     ) > 1
 end
-
-map(
-    {'n','i'},
-    "<M-[>",
-    function()
-	if (hasMultipleBuffer()) then
-	    vim.api.nvim_command[[bprev]]
-	end
-    end,
-    {
-	desc = "Goto Previous Buffer",
-	nowait = true,
-	noremap = true,
-	silent = true
-    }
-)
-map(
-    {'n','i'},
-    "<M-]>",
-    function ()
-	if (hasMultipleBuffer()) then
-	    vim.api.nvim_command[[bnext]]
-	end
-    end,
-    {
-	desc = "Goto Next Buffer",
-	nowait = true,
-	noremap = true,
-	silent = true
-    }
-)
-
-map(
-    {'n','i'},
-    "<C-q>",
-	function ()
-	    vim.api.nvim_command[[bwipeout]]
-	end,
-    {
-	desc = "Close Buffer",
-	nowait = true,
-	noremap = true,
-	silent = true
-    }
-)
-
-----
-
--- tab operations
-map(
-    {'n', 'i'},
-    "<M-S-t>t",
-	function ()
-	    vim.api.nvim_command('tabnew')
-	end,
-    {
-	desc = "New Tab",
-	noremap = false
-    }
-)
-map(
-    {'n', 'i'},
-    "<M-S-t>q",
-	function ()
-	    vim.api.nvim_command('tabclose')
-	end,
-    {
-	desc = "Close Tab",
-	noremap = false
-    }
-)
-map(
-    {'n', 'i'},
-    "<M-S-t>[",
-	function ()
-	    vim.api.nvim_command('tabprevious')
-	end,
-    {
-	desc = "Goto Previous Tab",
-	noremap = false
-    }
-)
-map(
-    {'n', 'i'},
-    "<M-S-t>]",
-	function ()
-	    vim.api.nvim_command('tabnext')
-	end,
-    {
-	desc = "Goto Next Tab",
-	noremap = false
-    }
-)
+--
+-- map(
+--     {'n','i'},
+--     "<M-[>",
+--     function()
+-- 	if (hasMultipleBuffer()) then
+-- 	    vim.api.nvim_command[[bprev]]
+-- 	end
+--     end,
+--     {
+-- 	desc = "Goto Previous Buffer",
+-- 	nowait = true,
+-- 	noremap = true,
+-- 	silent = true
+--     }
+-- )
+-- map(
+--     {'n','i'},
+--     "<M-]>",
+--     function ()
+-- 	if (hasMultipleBuffer()) then
+-- 	    vim.api.nvim_command[[bnext]]
+-- 	end
+--     end,
+--     {
+-- 	desc = "Goto Next Buffer",
+-- 	nowait = true,
+-- 	noremap = true,
+-- 	silent = true
+--     }
+-- )
+--
+-- map(
+--     {'n','i'},
+--     "<C-q>",
+-- 	function ()
+-- 	    vim.api.nvim_command[[bwipeout]]
+-- 	end,
+--     {
+-- 	desc = "Close Buffer",
+-- 	nowait = true,
+-- 	noremap = true,
+-- 	silent = true
+--     }
+-- )
+--
+-- ----
+--
+-- -- tab operations
+-- map(
+--     {'n', 'i'},
+--     "<M-S-t>t",
+-- 	function ()
+-- 	    vim.api.nvim_command('tabnew')
+-- 	end,
+--     {
+-- 	desc = "New Tab",
+-- 	noremap = false
+--     }
+-- )
+-- map(
+--     {'n', 'i'},
+--     "<M-S-t>q",
+-- 	function ()
+-- 	    vim.api.nvim_command('tabclose')
+-- 	end,
+--     {
+-- 	desc = "Close Tab",
+-- 	noremap = false
+--     }
+-- )
+-- map(
+--     {'n', 'i'},
+--     "<M-S-t>[",
+-- 	function ()
+-- 	    vim.api.nvim_command('tabprevious')
+-- 	end,
+--     {
+-- 	desc = "Goto Previous Tab",
+-- 	noremap = false
+--     }
+-- )
+-- map(
+--     {'n', 'i'},
+--     "<M-S-t>]",
+-- 	function ()
+-- 	    vim.api.nvim_command('tabnext')
+-- 	end,
+--     {
+-- 	desc = "Goto Next Tab",
+-- 	noremap = false
+--     }
+-- )
 map(
     {'n', 'i'},
     "<C-\\>",

@@ -1,5 +1,7 @@
 return {
     "ibhagwan/fzf-lua",
+    lazy = false,
+    priority = 1000,
     dependencies = {
 	"nvim-tree/nvim-web-devicons"
     },
