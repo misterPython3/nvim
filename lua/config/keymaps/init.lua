@@ -2,7 +2,7 @@ local base_func = require("config.base.func")
 local keys_func = require("config.keymaps.func")
 local vim = vim
 
-base_func.push(_G, keys_func)
+base_func.extend(_G, keys_func)
 
 local function save_as()
     local current_path = vim.fn.expand("%")
